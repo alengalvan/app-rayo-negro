@@ -1,0 +1,73 @@
+.img-header{
+    width: 80%;
+    padding-top: 25px;
+}
+
+.avatar {
+    width:100px;
+    height:90px;
+    border-radius:50px;
+}
+
+.nombre-persona{
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.ultima-sincronizacion{
+     color: white;
+    font-size: 12px;
+}
+
+.border-redondos{
+    border-radius: 15px;
+}
+
+.verde {
+  filter: hue-rotate(120deg);
+}
+
+.contenedor-principal{
+//   height: 300px;
+  width: 100%;
+//   background-color: linear-gradient(to top, #161b20, #161b20, #161b20, #161b20, #161b20);
+//   background-color: black;
+ background-color: rgb(43, 50, 55);
+  border-top-left-radius: 35px;
+  border-top-right-radius: 35px;
+  padding: 10px;
+//   border: solid red 1px;
+}
+
+.contenedores-evaluaciones{
+    background-color: #384147;
+    width: 100%;
+    height: 70px;
+    border-radius: 20px;
+    padding-top: 17px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.letra-contenedores-evaluaciones{
+    color: white;
+    font-size: 14;
+}
+
+.letra-contenedores-evaluaciones-secundaria{
+    color: white;
+    font-size: 12px;
+}
+
+.letra-contenedores-evaluaciones-numeros{
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.chart-container{
+    position: relative;
+    margin: auto;
+    // min-height: 300px;
+}

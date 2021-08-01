@@ -1,0 +1,313 @@
+<app-header></app-header>
+
+
+<ion-content class="ion-padding">
+
+  <ion-row class="ion-padding-horizontal">
+    <ion-col size="9" style="padding-top: 14px;">
+      <span class="nombre-persona">Fernanda González Gómez</span>
+    </ion-col>
+    <ion-col size="3">
+      <img src="assets/img/logo.png" alt="">
+    </ion-col>
+  </ion-row>
+
+  <br>
+  <ion-row class="ion-text-center" style="color: white;">
+
+    <ion-col size="1" *ngIf="pasoFormulario != 1">
+      <ion-row (click)="pasoFormulario = pasoFormulario - 1">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-row>
+    </ion-col>
+
+    <ion-col size="1" *ngIf="pasoFormulario == 1"></ion-col>
+
+    <ion-col size="10">
+      <ion-col *ngIf="pasoFormulario == 1">
+        <span>1 de 5</span> <br>
+        <span>Datos generales</span>
+      </ion-col>
+      <ion-col *ngIf="pasoFormulario == 2">
+        <span>2 de 5</span> <br>
+        <span>Geolocalización</span>
+      </ion-col>
+      <ion-col *ngIf="pasoFormulario == 3">
+        <span>3 de 5</span> <br>
+        <span>Seleccione el material</span>
+      </ion-col>
+      <ion-col *ngIf="pasoFormulario == 4">
+        <span>4 de 5</span> <br>
+        <span>Evidencia fotográfica</span>
+      </ion-col>
+      <ion-col *ngIf="pasoFormulario == 5">
+        <span>5 de 5</span> <br>
+        <span>Competencia</span>
+      </ion-col>
+    </ion-col>
+    <ion-col size="1" (click)="cerrarFormularios()">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <br><br>
+
+  <form [formGroup]="datosGenerales" class="padding-elementos" *ngIf="pasoFormulario == 1">
+
+    <ion-item class="ion-item-input">
+      <ion-input type="text" formControlName="nombreEstablecimiento" placeholder="Nombre del establecimiento">
+      </ion-input>
+    </ion-item>
+    <br>
+    <div style="background-color: rgb(43,50,55);border-radius: 20px;" class="ion-padding">
+      <ion-row>
+        <ion-col size="10">
+          <span style="color: white;font-size: 10;">¿Te compartieron la Razón Social?</span>
+        </ion-col>
+        <ion-col size="2">
+          <ion-toggle [(ngModel)]="compartieronRazonSocial" [ngModelOptions]="{standalone: true}" class="primary"
+            mode="ios">
+          </ion-toggle>
+        </ion-col>
+      </ion-row>
+      <ion-item class="ion-item-input">
+        <ion-input type="text" placeholder="Razón social" formControlName="razonSocial"
+          [disabled]="!compartieronRazonSocial">
+        </ion-input>
+      </ion-item>
+    </div>
+    <br>
+    <ion-item class="ion-item-input">
+      <ion-input type="text" formControlName="tipoComercio" placeholder="Tipo de comercio">
+      </ion-input>
+    </ion-item>
+    <br>
+    <ion-item class="ion-item-input">
+      <ion-input type="text" formControlName="subTipoComercio" placeholder="Subtipo de comercio">
+      </ion-input>
+    </ion-item>
+    <br>
+    <div style="background-color: rgb(43,50,55);border-radius: 20px;" class="ion-padding">
+      <ion-row>
+        <ion-col size="10">
+          <span style="color: white;font-size: 10;">¿Te compartieron la Razón Social?</span>
+        </ion-col>
+        <ion-col size="2">
+          <ion-toggle type="text" placeholder="Razón social" [(ngModel)]="estasEnOutlet"
+            [ngModelOptions]="{standalone: true}" class="primary" mode="ios">
+          </ion-toggle>
+        </ion-col>
+      </ion-row>
+      <ion-item class="ion-item-input">
+        <ion-input type="text" placeholder="¿Esta en un Outlet?" formControlName="nombreOutlet"
+          [disabled]="!estasEnOutlet">
+        </ion-input>
+      </ion-item>
+    </div>
+  </form>
+
+  <div *ngIf="pasoFormulario == 2">
+    <form [formGroup]="datosUbicacion" class="padding-elementos">
+      <ion-item class="ion-item-input">
+        <ion-input type="text" formControlName="numeroEstablecimiento" placeholder="Número del establecimiento">
+        </ion-input>
+      </ion-item>
+    </form>
+
+    <div class="ion-padding">
+      <ion-col size="12">
+        <img src="assets/img/ejemplo-mapa-dark.png" alt="">
+      </ion-col>
+    </div>
+
+    <ion-col size="6" style="color: white;font-size: 12px;">
+      <ion-row>
+        <ion-col size="12">
+          <span>Tienda Lupita</span>
+        </ion-col>
+        <ion-col size="12">
+          <span>Calle: </span> <span>Nebraska</span>
+        </ion-col>
+        <ion-col size="12">
+          <span>Municipio / Alcaldía: </span> <span>Benito Juárez</span>
+        </ion-col>
+        <ion-col size="12">
+          <span>CP: </span> <span>03900</span>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+
+  </div>
+
+  <div *ngIf="pasoFormulario == 8">
+    <ion-card class="ion-text-center ion-padding">
+      <div style="color: white;font-size: 25px;border-radius: 20px;background-color:  rgb(43, 50, 55);"
+        class="ion-padding">
+        <span>La dirección seleccionada ya existe.</span> <br> <br><br>
+        <span>¿Deseas realizar una renovación?</span>
+        <br><br>
+        <ion-toggle mode="ios"></ion-toggle>
+      </div>
+    </ion-card>
+  </div>
+
+  <div *ngIf="pasoFormulario == 3">
+
+    <ion-slides [options]="slideOptsOne" #slideWithNav>
+      <ion-slide *ngFor="let s of sliderOne.slidesItems">
+        <ion-card>
+          <div style="background-color:  rgb(43, 50, 55) ;width: 150px;height: 150px;">
+            <img src="assets/img/centro-comercial.png">
+            <span style="color: white;">Reloj(open- close)</span>
+          </div>
+        </ion-card>
+      </ion-slide>
+
+
+    </ion-slides>
+
+    <form [formGroup]="seleccioneMaterial" class="padding-elementos" *ngIf="pasoFormulario == 3">
+      <ion-item class="ion-item-input">
+        <ion-input type="text" formControlName="comunicacion" placeholder="Comunicación">
+        </ion-input>
+      </ion-item>
+      <br>
+      <ion-item class="ion-item-input">
+        <ion-input type="text" formControlName="localizacionItem" placeholder="Localización del item">
+        </ion-input>
+      </ion-item>
+    </form>
+
+  </div>
+
+  <div *ngIf="pasoFormulario == 4">
+
+    <div style="background-color: rgb(43,50,55);border-radius: 20px;color: white;text-align: center;"
+      class="ion-padding">
+      <ion-row>
+        <ion-col size="12">
+          <span>Fotografía de fachada</span>
+        </ion-col>
+      </ion-row>
+      <br>
+      <ion-row>
+        <ion-col size="5" class="ion-text-center">
+          <div
+            style="background-color:rgb(123,142,158);height: 100px;border-radius: 20px;padding-top: 30px;color: white;font-weight: bold;">
+            <span>Toma <br> Foto</span>
+          </div>
+        </ion-col>
+        <ion-col size="7">
+          <div>
+            <img src="assets/img/centro-comercial.png" alt="" style="height: 100px;width: 100%;">
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <br>
+
+    <div style="background-color: rgb(43,50,55);border-radius: 20px;color: white;text-align: center;"
+      class="ion-padding">
+      <ion-row>
+        <ion-col size="12">
+          <span>Fotografía Reloj (Open - Close)</span>
+        </ion-col>
+      </ion-row>
+      <br>
+      <ion-row>
+        <ion-col size="5" class="ion-text-center">
+          <div
+            style="background-color:rgb(123,142,158);height: 100px;border-radius: 20px;padding-top: 30px;color: white;font-weight: bold;">
+            <span>Toma <br> Foto</span>
+          </div>
+        </ion-col>
+        <ion-col size="7">
+          <div>
+            <img src="assets/img/centro-comercial.png" alt="" style="height: 100px;width: 100%;">
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <div *ngIf="pasoFormulario == 5">
+
+    <div style="background-color:rgb(43,50,55);color: white;border-radius: 20px;" class="ion-padding">
+      <ion-row>
+        <ion-col size="10" style="padding-top: 10px;">
+          <span>¿Está presente American Express?</span>
+        </ion-col>
+        <ion-col size="2">
+          <ion-toggle></ion-toggle>
+        </ion-col>
+      </ion-row>
+
+      <div>
+        <ion-row>
+          <ion-col size="12">
+            <ion-radio-group mode="md">
+              <ion-item>
+                <ion-label style="color: white;">Sticker</ion-label>
+                <ion-radio value="sticker" slot="start"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label style="color: white;">Reloj (open / close)</ion-label>
+                <ion-radio value="reloj" slot="start"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label style="color: white;">Acrilico</ion-label>
+                <ion-radio value="acrilico" slot="start"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <br>
+      <ion-row>
+        <ion-col size="10" style="padding-top: 10px;">
+          <span>¿Está presente Masterd Card?</span>
+        </ion-col>
+        <ion-col size="2">
+          <ion-toggle></ion-toggle>
+        </ion-col>
+      </ion-row>
+
+      <br>
+      <ion-row>
+        <ion-col size="10" style="padding-top: 10px;">
+          <span>¿Identificaste publicidad nueva?</span>
+        </ion-col>
+        <ion-col size="2">
+          <ion-toggle></ion-toggle>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="5" class="ion-text-center">
+          <div
+            style="background-color:rgb(123,142,158);height: 100px;border-radius: 20px;padding-top: 30px;color: white;font-weight: bold;">
+            <span>Toma <br> Foto</span>
+          </div>
+        </ion-col>
+        <ion-col size="7">
+          <div class="ion-text-center">
+            <img src="assets/img/foto.png" alt="" style="height: 100px;width: 70%;">
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <br>
+  <ion-row class="ion-padding-horizontal">
+    <ion-col size="12" class="ion-text-center">
+      <ion-button expand="block" color="medium" (click)="validacionDatosGenerales()"><b>
+          <span *ngIf="pasoFormulario != 5">Siguiente</span>
+          <span *ngIf="pasoFormulario == 5">Finalizar</span>
+        </b></ion-button>
+    </ion-col>
+  </ion-row>
+
+
+</ion-content>

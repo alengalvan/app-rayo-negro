@@ -24,3 +24,10 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+// --- desde aquí van nuestras variables y estilos globales
+
+ion-content {
+  --ion-background-color: linear-gradient(to top, #384147, #384147, #384147, #384147, #384147);
+// --ion-background-color: linear-gradient(to right top, #293137, #282f35, #262e33, #252c32, #242b30, #23292e, #21282d, #20262b, #1e2428, #1c2226, #1b2023, #191e21);
+}
